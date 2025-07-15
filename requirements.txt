@@ -1,0 +1,15 @@
+matplotlib             
+matplotlib-inline      
+numpy                  
+opencv-python          
+opencv-python-headless 
+pandas                
+pillow                
+seaborn                
+torch                  
+torchaudio             
+torchmetrics          
+torchvision          # CUDA   
+tqdm                   
+ipython                
+         
