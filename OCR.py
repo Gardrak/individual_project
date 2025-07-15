@@ -105,7 +105,7 @@ class OCRDataset(Dataset):
                  marks:      list[dict[str, str]], 
                  img_folder: str, 
                  tokenizer:  'Tokenizer', 
-                 transforms: torch.optim[callable] = None):
+                 transforms = None):
         self.img_paths = []
         self.texts = []
         for item in marks:
@@ -536,6 +536,8 @@ def plot_metrics():
 
     plt.show()
 
+
+
 # Тренировка модели | была закоментирована из-за ненадобности
 '''def train(model, optimizer, scheduler, TRAIN_LOADER, VAL_LOADER, epochs):
     best_acc = -np.inf
@@ -574,6 +576,7 @@ train(model, optimizer, scheduler, TRAIN_LOADER, VAL_LOADER, epochs=10)'''
 
 
 
+
 class InferenceTransform:
     """
     Трансформация для инференса. Обрабатывает список изображений.
@@ -606,13 +609,14 @@ class Predictor:
         model_path: Путь к весам модели
         device: Устройство для вычислений (None для автоопределения)
     """
-    def __init__(self, model_path: str, device: torch.optim[str] = None):  # Изменяем параметр device
+    def __init__(self, model_path: str, device= None):  # Изменяем параметр device
         if device is None:
             device = 'cuda' if torch.cuda.is_available() else 'cpu'
         self.tokenizer = Tokenizer(ALPHABET)
         self.device = torch.device(device)
 
         self.model = CRNN(number_class_symbols=self.tokenizer.get_num_chars())
+
         # Добавляем map_location для корректной загрузки на CPU
         self.model.load_state_dict(torch.load(model_path, map_location=self.device))
         self.model.to(self.device)
@@ -640,13 +644,13 @@ class Predictor:
 
         # Применяем трансформации
         images = self.transforms(images)
-        images = images.to(self.device)  # Переносим на нужное устройство
+        images = images.to(self.device)  
 
         # Получаем предсказания
         predictions = self.predict(images)
 
         if single_image:
-            return predictions[0]  # Возвращаем единственное предсказание
+            return predictions[0]  
         return predictions
 
 
@@ -662,10 +666,10 @@ class Predictor:
         """
         self.model.eval()  # Устанавливаем модель в режим оценки
         with torch.no_grad():
-            output = self.model(images)  # Получаем предсказания модели
+            output = self.model(images)  
 
         pred = torch.argmax(output.detach().cpu(), dim=-1).permute(1, 0).numpy()
-        text_predictions = self.tokenizer.decode(pred)  # Декодируем предсказания
+        text_predictions = self.tokenizer.decode(pred)  
         return text_predictions
     
 

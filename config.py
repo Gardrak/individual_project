@@ -1,9 +1,10 @@
 from libraries import *
 
+
 PROJECT_PATH = 'D:/programming/project/'
 
 DATASET_PATH = f'{PROJECT_PATH}/dataset'
-OCR_MODEL_PATH = f'{PROJECT_PATH}/models/model-7-0.9156.ckpt'
+OCR_MODEL_PATH = f'{PROJECT_PATH}/models/model-9-0.9943.ckpt'
 ALPHABET = '0123456789АВЕКМНОРСТУХ'
 
 
@@ -20,6 +21,7 @@ BATCH_SIZE_OCR = 16
 
 TRAIN_LOSSES = []
 VAL_ACCURACIES = []
+
 
 # Тестовые изображения
 IMAGE_PATHS = [
