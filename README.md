@@ -2,5 +2,5 @@
 Ссылка на используемый датасет: **https://www.kaggle.com/datasets/evgrafovmaxim/nomeroff-russian-license-plates**  
 Ссылка на готовые модели: **https://drive.google.com/drive/folders/12_Dapc6RHabmFyJOR47iXBOSUlt3Pf56?usp=drive_link**   
 Просто извлеките папки из архивов в копию проекта.  
-Папка `CarImages` содержит некоторое кол-во изображений для теста модел-и(-ей).  
+Папка `CarImages` содержит некоторое кол-во изображений для теста модел-и(-ей). За них отвечает переменная `OCR_MODEL_PATH` в `config.py`, замените название на интересующую модель.  
 Для теста проекта необходимо просто изменить переменную `PROJECT_PATH` на свою в `config.py`  
